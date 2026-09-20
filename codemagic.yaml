@@ -1,0 +1,17 @@
+workflows:
+  default-workflow:
+    name: Default Workflow
+    instance_type: mac_mini_m1
+    environment:
+      flutter: stable
+    triggering:
+      events:
+        - push
+    scripts:
+      - name: Install dependencies
+        script: |
+          cd customer_app
+          flutter packages get
+    artifacts:
+      - customer_app/build/app/outputs/flutter-apk/app-release.apk
+      
